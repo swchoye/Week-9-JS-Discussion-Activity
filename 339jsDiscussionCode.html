@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript Discussion</title>
+	<style>
+		p {
+			background-color: #b3b3b3;
+			border: 3px solid #FFFFFF;
+			padding: 3%;
+			font-size: 1.1em;
+			line-height: 1.5;
+		}
+	</style>
+
+	<script type="text/javascript">
+	    function displayInformation () {
+			// 1. Change the h1 element to your name.
+			document.querySelector("h1").innerHTML = "Sae Whan choye";
+
+			// 2. Update the three span elements using ONLY JavaScript.
+			document.getElementById("URL").innerHTML = window.location.href;
+			document.querySelector("#URL").style.color = "#0000FF";
+			document.getElementById("items").innerHTML = document.getElementsByTagName("li").length;
+			document.querySelector("#items").style.color = "#0000FF";
+			document.getElementById("time").innerHTML = new Date();
+			document.querySelector("#time").style.color = "#0000FF";
+
+			// 3. Change the background color and margin for the entire page.
+			document.body.style.backgroundColor = "#F5F5DC";
+			document.body.style.margin = "20px";
+
+			// 4. If someone uses the keyboard shortcut to copy the words "University of Michigan" then add the words "Go Blue" to the final div.  
+			// Each occurence should be on a separate line.  Don't use paragraphs. 
+			document.getElementById("cheer").addEventListener("copy", function(e) {
+				if (e.clipboardData.getData("text") === "University of Michigan") {
+					e.preventDefault();
+					e.clipboardData.setData("text/plain", "Go Blue\n");
+				}
+			});
+		}
+	</script>
+</head>
+<body onload="displayInformation()">
+	<h1>Your name goes here</h1>
+
+	<ol>
+		<li>Apples</li>
+		<li>Bananas</li>
+		<li>Celery</li>
+		<li>Doughnuts</li>
+	</ol>
+	<h2>Use JavaScript to display the following information here:</h2>
+	<p>
+		The URL of this page is: <span id="URL"></span><br>
+		The number of list items for this page: <span id="items"></span><br>
+		The current date/time is: <span id="time"></span><br>
+	</p>
+	<ul>
+		<li>Kent State</li>
+		<li>University of Pittsburgh</li>
+		<li>University of Ulster</li>
+		<li>California State University Long Beach</li>
+		<li oncopy="copyFunction()">University of Michigan</li>
+	</ul>
+	<div id="cheer"></div>
+</body>
+</html>
